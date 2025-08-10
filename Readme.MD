@@ -26,7 +26,7 @@ npm run dev
 
 
 
-# Deploy to GCP
+# Deploy backend to GCP
 gcloud auth login
 gcloud config set project sample-website-468413 # use correct project ID
 gcloud services enable run.googleapis.com
@@ -42,3 +42,17 @@ gcloud run deploy flask-backend \
 
 # Access backend like below
 curl https://flask-backend-625384235966.us-central1.run.app/api/message
+
+# Deploy frontend (Firebase)
+npm install -g firebase-tools
+firebase login
+firebase projects:create sample-website-firebase
+firebase projects:list
+firebase init hosting
+cd my-app/
+npm run build
+firebase deploy
+
+# Website
+firebase hosting:sites:list
+https://sample-website-firebase.web.app/
