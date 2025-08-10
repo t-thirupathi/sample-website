@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -11,15 +12,15 @@ function App() {
 
   useEffect(() => {
     fetch(`${backendUrl}/api/message`)
-      .then(res => res.json())
-      .then(data => setMessage(data.message))
-      .catch(err => console.error(err));
-  }, []);
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message))
+      .catch((err) => console.error(err));
+  }, [backendUrl]);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Simple React + Python Webpage</h1>
-      <p>{message || "Loading..."}</p>
+    <div className="app-container">
+      <h1 className="app-title">Simple React + Python Webpage</h1>
+      <p className="app-message">{message || "Loading..."}</p>
     </div>
   );
 }
